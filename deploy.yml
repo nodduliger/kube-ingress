@@ -1,0 +1,111 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php
+  namespace: rohitns
+  labels:
+    app: php
+spec:
+  selector:
+    matchLabels:
+      app: php
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: php
+    spec:
+      containers:
+      - name: phpapp
+        image: public.ecr.aws/a1y7x5u9/phpapp
+        ports:
+            - containerPort: 80
+        resources:
+          limits:
+            memory: "100Mi"
+            cpu: "200m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloworld
+  namespace: rohitns
+  labels:
+    app: hello
+spec:
+  selector:
+    matchLabels:
+      app: hello
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: hello
+    spec:
+      containers:
+      - name: helloworld
+        image: public.ecr.aws/a1y7x5u9/helloworld
+        ports:
+            - containerPort: 80
+        resources:
+          limits:
+            memory: "100Mi"
+            cpu: "200m"
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  namespace: rohitns
+  labels:
+    app: nginx
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: public.ecr.aws/nginx/nginx:1.24-alpine`
+        ports:
+            - containerPort: 80
+        resources:
+          limits:
+            memory: "100Mi"
+            cpu: "200m"
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apache
+  namespace: rohitns
+  labels:
+    app: apache
+spec:
+  selector:
+    matchLabels:
+      app: apache
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: apache
+    spec:
+      containers:
+      - name: apache
+        image: public.ecr.aws/a1y7x5u9/apache
+        ports:
+            - containerPort: 80
+        resources:
+          limits:
+            memory: "100Mi"
+            cpu: "200m"
