@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
       - name: phpapp
-        image: public.ecr.aws/a1y7x5u9/phpapp
+        image: shawnfrost/phpapp:latest
         ports:
             - containerPort: 80
         resources:
@@ -51,7 +51,7 @@ spec:
     spec:
       containers:
       - name: helloworld
-        image: public.ecr.aws/a1y7x5u9/helloworld
+        image: shawnfrost/hello:latest
         ports:
             - containerPort: 80
         resources:
@@ -105,7 +105,7 @@ spec:
     spec:
       containers:
       - name: apache
-        image: public.ecr.aws/a1y7x5u9/apache
+        image: shawnfrost/apache:latest
         ports:
             - containerPort: 80
         resources:
