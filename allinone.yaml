@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: rohitns
+  name: suraj
 
 ---
 
@@ -9,7 +9,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: php
-  namespace: rohitns
+  namespace: suraj
   labels:
     app: php
 spec:
@@ -36,7 +36,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: helloworld
-  namespace: rohitns
+  namespace: suraj
   labels:
     app: hello
 spec:
@@ -63,7 +63,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx
-  namespace: rohitns
+  namespace: suraj
   labels:
     app: nginx
 spec:
@@ -90,7 +90,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: apache
-  namespace: rohitns
+  namespace: suraj
   labels:
     app: apache
 spec:
@@ -117,7 +117,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: php-svc
-  namespace: rohitns
+  namespace: suraj
 spec:
   type: NodePort
   selector:
@@ -131,7 +131,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: hello-svc
-  namespace: rohitns
+  namespace: suraj
 spec:
   type: NodePort
   selector:
@@ -145,7 +145,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: nginx-svc
-  namespace: rohitns
+  namespace: suraj
 spec:
   type: NodePort
   selector:
@@ -159,7 +159,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: apache-svc
-  namespace: rohitns
+  namespace: suraj
 spec:
   type: NodePort
   selector:
@@ -172,12 +172,12 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: rohit-ingress
-  namespace: rohitns
+  name: suraj-ingress
+  namespace: suraj
   labels:
-    app: rohitns
+    app: suraj
   annotations:
-    alb.ingress.kubernetes.io/subnets: subnet-0c122e7bb792f6c66, subnet-0509ebe1d8e04c52b, subnet-09db4ea8cad684953
+    alb.ingress.kubernetes.io/subnets: subnet-01c0da85ce76a3bd1, subnet-04b1561fd04120715, subnet-0faaac6633201295b
     kubernetes.io/ingress.class: "alb"
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
@@ -228,7 +228,7 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: my-hpa
-  namespace: rohitns
+  namespace: suraj
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
